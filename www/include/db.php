@@ -2,8 +2,8 @@
 // --- databázové funkce ---
 
 // globální objekt - připojí databázi - vitální!
-$_db_ = mysqli_connect("database", "admin", "heslo", "mixolog") or die;
-
+#$_db_ = mysqli_connect("database", "admin", "heslo", "mixolog") or die;
+$_db_ = mysqli_connect("localhost", "root", "");
 // dotaz k databázi
 function dbQuery(string $query): bool|mysqli_result
 {
@@ -24,13 +24,12 @@ function authUser(string $jmeno, string $heslo): bool
     $jmeno = dbEscape($jmeno);
     $heslo = dbEscape($heslo);
 
-    if ($result = dbQuery("select id from uzivatele where jmeno=$jmeno and heslo=$heslo")) {
+    if ($result = dbQuery("SELECT id FROM uzivatele WHERE jmeno=$jmeno AND heslo=$heslo")) {
         if ($result->num_rows) {
             // fetch_all() vrací pole polí (řádky, a každá má políčka)
             // [[$id]] je dekonstrukce: vezme první hodnotu z první řádky
             [[$id]] = $result->fetch_all();
-            if ($id)
-                return true;
+            if ($id) return true;
         }
     }
 
