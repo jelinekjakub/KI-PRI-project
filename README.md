@@ -1,3 +1,14 @@
+# Co bylo přidáno, vylepšeno nebo odstraněno
+
+- Byl změněn celkový přístup, z důvodu zdrojů a jednoduchosti byl projekt předělán na lokální server Apache
+- Struktura projektu byla předělána z důvodu lepší orientace a přehledu
+- Pro jednotlivé funkce, které byli zařazeny v jednotlivých souborech byl vytvořen komplexnejší přístup pomocí tříd
+- Nově vznikla složka `app`, obsahující třídy nezbytné pro běh (`Auth`, `Database`, `Xml`, `Navigation`)
+- Jednotlivé komponenty byli upraveny a přesunuty do složky `components`
+- Soubory xml,xsd,xsl byli přesunuty do `resources/xml`
+- Soubory s drinky do složky `resources/drinks`
+- Nová stránka byla přidána, která umožňuje vytvořit uplně nový recept bez nahrávání `.xml` souborů
+- Pomocí formuláře lze všechny parametry vyplnit, a při odeslání a `POST` requestu se vytvoří validní soubor, který se nahraje do příslušného adresáře
 # Seminární práce: full-stack projekt
 
 Tento ukázkový projekt obsahuje části typické webové aplikace:
