@@ -1,16 +1,18 @@
 <?php // přihlášení uživatele
 require_once 'app/database.php';
+require_once 'app/auth.php';
 
 require 'app/prolog.php';
 require 'components/header.php';
 
 use App\Database;
+use App\Auth;
 
 switch (@$_POST['akce']) {
     case 'login':
         if (Database::auth($jmeno = @$_POST['jmeno'], @$_POST['heslo']))
         {
-            setJmeno($jmeno);
+            Auth::login($jmeno);
         }
         else
         {
@@ -19,7 +21,7 @@ switch (@$_POST['akce']) {
         break;
 
     case 'logout':
-        setJmeno();
+        Auth::logout();
         break;
 }
 
@@ -34,7 +36,7 @@ $inputClass = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-
         // no default submit
         e.preventDefault()
 
-        <?php if (!isUser()) { ?>
+        <?php if (!Auth::auth()) { ?>
             // inputs
             let { jmeno, heslo } = this.elements
 
@@ -58,8 +60,8 @@ $inputClass = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-
 
 <div class="flex justify-center m-12">
     <form name="loginForm" class="bg-zinc-50 rounded px-8 pt-6 pb-8 mb-4" method="POST">
-        <input type="hidden" name="akce" value="<?= isUser() ? 'logout' : 'login' ?>">
-        <?php if (!isUser()) { ?>
+        <input type="hidden" name="akce" value="<?= Auth::auth() ? 'logout' : 'login' ?>">
+        <?php if (!Auth::auth()) { ?>
             <div class="mb-4 text-center text-xl">
                 Přihlášení
             </div>
@@ -77,7 +79,7 @@ $inputClass = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-
             </div>
         <?php } ?>
         <input class="bg-blue-500 text-white font-bold rounded py-2 px-4" type="submit"
-            value="<?= isUser() ? 'Odhlásit' : 'Přihlásit' ?>" />
+            value="<?= Auth::auth() ? 'Odhlásit' : 'Přihlásit' ?>" />
     </form>
 </div>
 

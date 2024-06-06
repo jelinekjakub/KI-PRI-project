@@ -3,11 +3,14 @@ require 'app/prolog.php';
 require 'components/header.php';
 require 'components/nav.php';
 require 'components/boxes.php';
-require_once 'app/xml.php';
 
+require_once 'app/xml.php';
+require_once 'app/auth.php';
+
+use App\Auth;
 use App\Xml;
 
-if (!isUser())
+if (!Auth::auth())
     die; ?>
 
 <div class="flex justify-center m-12">

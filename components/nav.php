@@ -1,5 +1,11 @@
-<?php // navbar – navigační lišta
-require './app/pages.php';
+<?php
+
+require_once './app/navigation.php';
+require_once './app/auth.php';
+
+use App\Navigation;
+use App\Auth;
+
 ?>
 
 <!-- top navigation bar -->
@@ -10,7 +16,7 @@ require './app/pages.php';
             <div class="flex">
                 <img src="../resources/assets/drink.jpg" class="h-8 mr-3" alt="drink image" />
                 <span class="text-2xl font-semibold whitespace-nowrap">
-                    <?= TITLE . getJmeno(': ') ?>
+                    <?= TITLE . Auth::user(': ') ?>
                 </span>
             </div>
         </a>
@@ -24,7 +30,7 @@ require './app/pages.php';
         <!-- menu items -->
         <div class="hidden w-full md:block md:w-auto mr-3" id="menu">
             <ul class="font-medium flex flex-col md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0">
-                <?php foreach ($pages as $href => $title) { ?>
+                <?php foreach (Navigation::getPages() as $href => $title) { ?>
                     <li>
                         <a href="<?= $href ?>" class="block p-2 rounded text-blue-700 hover:bg-gray-100">
                             <?= $title ?>
