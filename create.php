@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ingredientDiv.className = 'ingredient-item grid grid-cols-2 gap-4 mb-2 bg-gray-100 rounded-md';
         ingredientDiv.innerHTML = `
                 <div class="col-span-2 sm:col-span-1">
-                    <input type="text" name="položka[]" placeholder="Ingredience" class="ingredient-name block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input type="text" name="položka[]" required placeholder="Ingredience" class="ingredient-name block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
                 <div class="hidden-fields col-span-2 sm:col-span-1 grid grid-cols-2 gap-4">
                     <div>
@@ -166,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="sm:col-span-2">
                 <label for="název" class="block text-sm font-medium leading-6 text-gray-900">Název</label>
                 <div class="mt-2">
-                    <input type="text" name="název" id="název"
+                    <input type="text" name="název" id="název" required
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
@@ -175,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>
                 <label for="země_původu" class="block text-sm font-medium leading-6 text-gray-900">Země původu</label>
                 <div class="mt-2">
-                    <input type="text" name="země_původu" id="země_původu"
+                    <input type="text" name="země_původu" id="země_původu" required
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
@@ -185,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="doba_přípravy" class="block text-sm font-medium leading-6 text-gray-900">Doba
                     přípravy</label>
                 <div class="mt-2">
-                    <input type="number" step="0.1" name="doba_přípravy" id="doba_přípravy"
+                    <input type="number" step="0.1" name="doba_přípravy" id="doba_přípravy" required
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="jednotka_doba_přípravy" class="block text-sm font-medium leading-6 text-gray-900">Jednotka
                     doba přípravy</label>
                 <div class="mt-2">
-                    <input type="text" name="jednotka_doba_přípravy" id="jednotka_doba_přípravy"
+                    <input type="text" name="jednotka_doba_přípravy" id="jednotka_doba_přípravy" required
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
@@ -204,7 +204,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>
                 <label for="obtížnost" class="block text-sm font-medium leading-6 text-gray-900">Obtížnost</label>
                 <div class="mt-2">
-                    <select name="obtížnost" id="obtížnost"
+                    <select name="obtížnost" id="obtížnost" required
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <option value="začátečník">Začátečník</option>
                         <option value="pokročilý">Pokročilý</option>
@@ -217,7 +217,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>
                 <label for="autor_článku" class="block text-sm font-medium leading-6 text-gray-900">Autor článku</label>
                 <div class="mt-2">
-                    <input type="text" name="autor_článku" id="autor_článku"
+                    <input type="text" name="autor_článku" id="autor_článku" required
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
@@ -226,7 +226,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>
                 <label for="počet_porcí" class="block text-sm font-medium leading-6 text-gray-900">Počet porcí</label>
                 <div class="mt-2">
-                    <input type="number" name="počet_porcí" id="počet_porcí" value="1"
+                    <input type="number" name="počet_porcí" id="počet_porcí" value="1" required
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
@@ -249,7 +249,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="sm:col-span-2">
                 <label for="postup" class="block text-sm font-medium leading-6 text-gray-900">Postup</label>
                 <div class="mt-2">
-                    <textarea name="postup" id="postup" rows="4"
+                    <textarea name="postup" id="postup" rows="4" required
                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                 </div>
             </div>
