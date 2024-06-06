@@ -1,12 +1,21 @@
 <?php // přihlášení uživatele
-require '../prolog.php';
-require INC . '/db.php';
-require INC . '/html-begin.php';
+require_once 'app/database.php';
+
+require 'app/prolog.php';
+require 'components/header.php';
+
+use App\Database;
 
 switch (@$_POST['akce']) {
     case 'login':
-        if (authUser($jmeno = @$_POST['jmeno'], @$_POST['heslo']))
+        if (Database::auth($jmeno = @$_POST['jmeno'], @$_POST['heslo']))
+        {
             setJmeno($jmeno);
+        }
+        else
+        {
+            echo "Nesprávné jméno nebo heslo";
+        }
         break;
 
     case 'logout':
@@ -15,7 +24,7 @@ switch (@$_POST['akce']) {
 }
 
 // nav až po nastavení jména, aby se zobrazilo
-require INC . '/nav.php';
+require 'components/nav.php';
 
 $inputClass = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline";
 ?>
@@ -51,14 +60,20 @@ $inputClass = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-
     <form name="loginForm" class="bg-zinc-50 rounded px-8 pt-6 pb-8 mb-4" method="POST">
         <input type="hidden" name="akce" value="<?= isUser() ? 'logout' : 'login' ?>">
         <?php if (!isUser()) { ?>
-            <div class="mb-4">
+            <div class="mb-4 text-center text-xl">
                 Přihlášení
             </div>
             <div class="mb-4">
-                <input class="<?= $inputClass ?>" name="jmeno" type="text" placeholder="jméno" required>
+                <label>
+                    Jméno
+                    <input class="<?= $inputClass ?>" name="jmeno" type="text" required>
+                </label>
             </div>
             <div class="mb-4">
-                <input class="<?= $inputClass ?>" name="heslo" type="password" placeholder="heslo" required>
+                <label>
+                    Heslo
+                    <input class="<?= $inputClass ?>" name="heslo" type="password" required>
+                </label>
             </div>
         <?php } ?>
         <input class="bg-blue-500 text-white font-bold rounded py-2 px-4" type="submit"
@@ -70,4 +85,4 @@ $inputClass = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-
     document.loginForm.addEventListener('submit', onSubmit)
 </script>
 
-<?php require INC . '/html-end.php';
+<?php require 'components/footer.php';

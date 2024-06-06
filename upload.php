@@ -1,9 +1,11 @@
 <?php // nahrát recept
-require '../prolog.php';
-require INC . '/html-begin.php';
-require INC . '/nav.php';
-require INC . '/boxes.php';
-require INC . '/xmlTools.php';
+require 'app/prolog.php';
+require 'components/header.php';
+require 'components/nav.php';
+require 'components/boxes.php';
+require_once 'app/xml.php';
+
+use App\Xml;
 
 if (!isUser())
     die; ?>
@@ -23,12 +25,12 @@ if (!isUser())
 <?php
 
 if (($xmlFile = @$_FILES['xml']) && ($tmpName = @$xmlFile['tmp_name'])) {
-    $isValid = xmlValidate($tmpName, XML . '/recept.xsd');
+    $isValid = Xml::validateXSD($tmpName, 'resources/xml/recept.xsd');
     if (!$isValid)
         errorBox('XML soubor není validní.');
     else {
         $drink = $xmlFile['name'];
-        $target = DRINKS . "/$drink";
+        $target = "resources/drinks" . "/$drink";
         if (file_exists($target))
             errorBox('Recept už máme.');
         elseif (rename($tmpName, $target))
@@ -37,4 +39,4 @@ if (($xmlFile = @$_FILES['xml']) && ($tmpName = @$xmlFile['tmp_name'])) {
     }
 }
 
-require INC . '/html-end.php';
+require 'components/footer.php';

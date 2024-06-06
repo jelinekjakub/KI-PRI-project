@@ -6,18 +6,19 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 SET NAMES utf8mb4;
 
 -- tabulka registrovaných uživatelů (kteří moho nahrávat recepty)
-DROP TABLE IF EXISTS `uzivatele`;
-CREATE TABLE `uzivatele` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `jmeno` varchar(100) NOT NULL,
-  `heslo` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `jmeno` (`jmeno`)
+  UNIQUE KEY `username` (`username`)
 );
 
-INSERT INTO `uzivatele` (`id`, `jmeno`, `heslo`) VALUES
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1,	'pavel',	'pavel'),
 (2,	'alena',	'heslo'),
+(4, 'admin', '123456789'),
 (3,	'petr',	  '12345');
 
 -- tabulka receptů – počet zobrazení

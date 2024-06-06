@@ -8,4 +8,7 @@ $pages = [
 
 // přihlášený uživatel smí nahrávat recepty
 if (isUser())
+{
     $pages['/upload.php'] = 'Nahrát';
+    $pages['/create.php'] = 'Vytvořit';
+}

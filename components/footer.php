@@ -2,7 +2,8 @@
     <?= TITLE ?>
     –
     <a class="fa fa-github fa-lg" href="https://github.com/JanBurle/UJEP/tree/main/Projekty/Projekt%20-%20fullstack"
-        target="_source">
+       target="_source">
+        github
     </a>
 </footer>
 

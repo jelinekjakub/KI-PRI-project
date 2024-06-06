@@ -1,5 +1,5 @@
 <?php // navbar – navigační lišta
-require INC . '/pages.php';
+require './app/pages.php';
 ?>
 
 <!-- top navigation bar -->
@@ -8,7 +8,7 @@ require INC . '/pages.php';
         <!-- logo & title -->
         <a href='/'>
             <div class="flex">
-                <img src="./assets/drink.jpg" class="h-8 mr-3" />
+                <img src="../resources/assets/drink.jpg" class="h-8 mr-3" alt="drink image" />
                 <span class="text-2xl font-semibold whitespace-nowrap">
                     <?= TITLE . getJmeno(': ') ?>
                 </span>
